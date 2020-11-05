@@ -1,12 +1,6 @@
-make the generating usb work
-make github repo
-
-make copying of post_install.sh after install.sh is finsihed
 TEST
 
-add more stuff to post_install.sh
-    pacman -S list
-    compile st termininal
-    copy bspwm config
+Hard goals:
+    Make live usb image generated with these scripts included inside
 
-make arch.sh check if there is already existing iso and not download
+

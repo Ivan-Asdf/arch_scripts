@@ -18,3 +18,6 @@ mount "$DRIVE"1 ~/mnt/boot
 
 pacstrap ~/mnt base linux linux-firmware vim
 genfstab -U ~/mnt >> ~/mnt/etc/fstab
+
+mkdir -p ~/mnt/arch
+cp post_install.sh post_install2.sh ~/mnt/arch
