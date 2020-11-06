@@ -1,8 +1,7 @@
-Fix the nvme(p1, p2 etc) issue)
-Have variables instead of hard coded + promt user for more options
-Add better error handling - trap last comand etcetera
-
-Hard goals:
-    Make live usb image generated with these scripts included inside
-
+Make install.sh fail/repetition resistant
+	dont put more than one $USER sudo entry
+Make post_install.sh fail/repetition effective
+	check if wifi is already connected before asking to connect again
+	
+Make reboot and start of post_install.sh automatic.
 
