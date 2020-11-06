@@ -1,4 +1,6 @@
-TEST
+Fix the nvme(p1, p2 etc) issue)
+Have variables instead of hard coded + promt user for more options
+Add better error handling - trap last comand etcetera
 
 Hard goals:
     Make live usb image generated with these scripts included inside
