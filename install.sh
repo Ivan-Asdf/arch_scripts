@@ -6,9 +6,9 @@ then
     echo Please enter drive argument
 fi
 drive_suffix='';
-if [ $DRIVE == *"nvme"* ]
+if [[ $DRIVE == *"nvme"* ]]
 then
-	isNvme='p';
+	drive_suffix='p';
 fi
 
 # Partitoning
@@ -29,23 +29,13 @@ mkdir ~/mnt/boot
 mount "$DRIVE""$drive_suffix"1 ~/mnt/boot
 pacstrap ~/mnt base base-devel linux linux-firmware vim
 genfstab -U ~/mnt >> ~/mnt/etc/fstab
-# Clone this scripts repo to drive (to run after install)
-git clone . ~/mnt/arch
 
 ## CHROOT
-arch-chroot ~/mnt
-# Create users and passwords. Setup sudo.
-pacman -S --noconfirm sudo grub efibootmgr networkmanager
-echo "Enter new root password: "
-passwd
 echo "Enter new user name:"
 read USER_NAME
-useradd -m $USER_NAME
-echo "Enter $USER_NAME password: "
-passwd $USER_NAME
-echo "$USER  ALL=(ALL:ALL) ALL" >> /etc/sudoers
+cp chroot.sh ~/mnt/
+arch-chroot ~/mnt ./chroot.sh $USER_NAME
 
-# Install bootloader
-grub-install --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
+# Clone this scripts repo to new user home(to run after install)
+git clone . ~/mnt/home/$USER_NAME/scripts
 

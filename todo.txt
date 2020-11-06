@@ -1,3 +1,10 @@
+Small:
+Fix "Enter new user/pass/rootpass.. etc" message and input ordering.
+Make clone of script repo be inside new user home and with apropriate own/mod
+
+Sideeffects: .config and .xinitrc are owned by root
+
+Big:
 Make install.sh fail/repetition resistant
 	dont put more than one $USER sudo entry
 Make post_install.sh fail/repetition effective

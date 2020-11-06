@@ -12,16 +12,17 @@ nmcli device wifi connect $NAME password $PASS
 
 # Install bspwm(and its dependencies), alsa-utils & other general software.
 pacman -S --noconfirm xorg xorg-xinit bspwm sxhkd dmenu firefox cloc ranger feh evince gvfs git alsa-utils
-mkdir -p /home/$USER/.config/bspwm
-mkdir -p /home/$USER/.config/sxhkd
+mkdir -p /home/$SUDO_USER/.config/bspwm
+mkdir -p /home/$SUDO_USER/.config/sxhkd
 #cp bspwmrc ~/.config/bspwm/bspwmrc
-cp /usr/share/doc/bspwm/examples/bspwmrc /home/$USER/.config/bspwm/bspwmrc
-cp /usr/share/doc/bspwm/examples/sxhkdrc /home/$USER/.config/sxhkd/sxhkdrc
+cp /usr/share/doc/bspwm/examples/bspwmrc /home/$SUDO_USER/.config/bspwm/bspwmrc
+cp /usr/share/doc/bspwm/examples/sxhkdrc /home/$SUDO_USER/.config/sxhkd/sxhkdrc
 
 # Install st terminal. And set it as default in sxhkdrc
 # TODO: Make this compatible with set -e(remove || true)
 git clone https://github.com/Ivan-Asdf/st || true
 cd st
 make clean install
-sed -i -e 's/urxvt/st/g' /home/$USER/.config/sxhkd/sxhkdrc
+sed -i -e 's/urxvt/st/g' /home/$SUDO_USER/.config/sxhkd/sxhkdrc
 pacman -Syu --noconfirm ttf-dejavu
+echo "exec bspwm" > /home/$SUDO_USER/.xinitrc
